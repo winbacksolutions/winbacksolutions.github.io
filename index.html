@@ -404,7 +404,7 @@ body{background:#05080F}
 @keyframes drift{to{transform:translate3d(-7vw,6vh,0) scale(1.15)}}
 .bar{background:transparent;border-bottom:1px solid transparent;transition:background-color .3s var(--ease),border-color .3s var(--ease)}
 .bar.is-stuck{background:rgba(5,8,15,.62);-webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);border-bottom-color:var(--line)}
-.hero__title,.h2,.result__euros{background:linear-gradient(180deg,#FFFFFF 0%,#F5F3EE 45%,#A9B1C4 115%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero__title,.h2,.result__euros,.night__time{background:linear-gradient(180deg,#FFFFFF 0%,#F5F3EE 45%,#A9B1C4 115%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .book__card::before,.hero__demo::before{content:"";position:absolute;z-index:-1;inset:8% 4% -6%;border-radius:40%;background:radial-gradient(50% 50% at 50% 55%,rgba(91,123,200,.75),transparent 72%);filter:blur(50px);pointer-events:none}
 .hero__demo::before{inset:16% 16% auto;aspect-ratio:1;border-radius:50%;opacity:.55;filter:blur(70px)}
 .step__ui{position:relative;isolation:isolate}
@@ -517,9 +517,116 @@ body{background:#05080F}
 @keyframes pre-out{to{clip-path:inset(0 0 100% 0);visibility:hidden}}
 @media (prefers-reduced-motion:reduce){.js .pre{display:none}}
 
+/* Assistant: the second product on its own band. One Sunday night told in three times, then what it does and what it never does */
+.asis{position:relative;isolation:isolate;padding-block:var(--section)}
+.asis::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent,rgba(15,24,48,.6) 6%,rgba(15,24,48,.6) 94%,transparent);border-block:1px solid var(--line);pointer-events:none}
+.asis + .faq{padding-top:var(--section)}
+.asis__head{row-gap:24px;align-items:end}
+.asis__head>*{grid-column:1/-1}
+.asis__head .h2{max-width:17ch}
+.tag-live{justify-self:start;display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 12px;border-radius:999px;border:1px solid var(--line-2);background:rgba(5,8,15,.5);font-size:var(--t-small);font-weight:600;line-height:1.3}
+.tag-live i{flex:none;width:8px;height:8px;border-radius:50%;background:var(--glow);box-shadow:0 0 0 4px rgba(92,127,214,.22),0 0 14px rgba(92,127,214,.9)}
+@media (min-width:900px){
+  .asis__head .tag-live,.asis__head .h2{grid-column:1/span 7}
+  .asis__head .copy{grid-column:9/-1;grid-row:2}
+}
+.night{margin-top:clamp(56px,6vw,96px);row-gap:28px;align-items:start}
+.night>*{grid-column:1/-1;min-width:0}
+.night__aside{display:grid;gap:clamp(28px,3vw,44px);align-content:start}
+.night__clock{display:grid;gap:12px}
+.night__time{font-size:var(--t-figure);font-weight:600;letter-spacing:-.04em;line-height:1;padding-block:.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.night__time.has-odo{background:none}
+.night__meta{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+.night__day{font-size:var(--t-statement);font-weight:500;letter-spacing:-.022em;line-height:1.2;color:var(--steel)}
+.night__now{display:none}
+.night__steps{display:grid;gap:24px;max-width:31rem}
+.night__steps li{position:relative;display:grid;grid-template-columns:3.25rem minmax(0,1fr);column-gap:14px;row-gap:4px;padding-left:24px;color:var(--steel)}
+.night__steps li::before{content:"";position:absolute;left:0;top:.45em;width:9px;height:9px;border-radius:50%;background:var(--steel);transition:background-color .4s var(--ease),box-shadow .4s var(--ease)}
+.night__steps .t{grid-row:1/span 2;font-size:var(--t-small);font-weight:600;font-variant-numeric:tabular-nums;padding-top:.2em}
+.night__steps b{font-weight:600;color:var(--cream);transition:color .4s var(--ease)}
+.js .night__steps li:not(.is-now)::before{background:var(--navy-3)}
+.js .night__steps li:not(.is-now) b{color:var(--steel)}
+.night__steps li.is-now::before{background:var(--cream);box-shadow:0 0 0 4px rgba(92,127,214,.25),0 0 16px rgba(92,127,214,.9)}
+.night__screen{display:grid}
+.night__gap{display:grid;justify-items:center}
+.night__gap::before,.night__gap::after{content:"";height:clamp(40px,5vw,72px);border-left:2px dashed var(--line-2)}
+.night__gap::after{height:20px}
+.night__gap .chat__day{margin-block:8px}
+.recep__facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 18px;margin-top:4px;padding-top:16px;border-top:1px solid var(--line)}
+.recep__facts div{display:grid;gap:2px;align-content:start;min-width:0}
+.recep__facts dt{font-size:.75rem;font-weight:500;color:var(--steel)}
+.recep__facts dd{font-size:.9375rem;font-weight:600;line-height:1.35}
+.night .msg--in{transform-origin:left bottom}
+.night .msg--out{transform-origin:right bottom}
+.js .night [data-g]{transition:opacity .6s var(--ease) var(--d,0s),transform .7s var(--ease) var(--d,0s),filter .6s var(--ease) var(--d,0s)}
+.js .night [data-g]:not(.is-on){opacity:0;transform:translateY(14px) scale(.97);filter:blur(4px)}
+@media (min-width:900px){
+  .night__aside{grid-column:1/span 5;position:sticky;top:calc(113px + env(safe-area-inset-top,0px))}
+  .night__screen{grid-column:7/-1;grid-row:1}
+}
+/* Phones and tablets: the clock rides under the bar as a second strip while the conversation scrolls */
+@media (max-width:899.98px){
+  .js .night__aside{position:sticky;top:calc(73px + env(safe-area-inset-top,0px));z-index:3;margin-inline:calc(-1 * var(--gutter));padding:10px var(--gutter) 12px;background:rgba(5,8,15,.94);-webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);border-bottom:1px solid var(--line)}
+  .js .night__clock{grid-template-columns:auto minmax(0,1fr);align-items:center;column-gap:16px}
+  .js .night__time{font-size:var(--t-h2)}
+  .js .night__meta{display:grid;gap:2px}
+  .js .night__day{font-size:var(--t-small);font-weight:600;line-height:1.3}
+  .js .night__now{display:block;font-size:.9375rem;font-weight:600;line-height:1.3}
+  .js .night__steps{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+}
+.caps{margin-top:clamp(96px,10vw,160px);row-gap:clamp(32px,4vw,48px);align-items:start}
+.caps>*{grid-column:1/-1;min-width:0}
+.cap--lead{display:grid;gap:clamp(28px,3vw,40px);padding:clamp(24px,3vw,44px)}
+.cap__text{display:grid;gap:14px;align-content:start}
+.cap__text .h3{font-size:var(--t-statement);letter-spacing:-.025em;line-height:1.12}
+.cap__text p{max-width:32rem;text-wrap:pretty}
+.dial{display:grid;gap:22px;align-items:center}
+.dial__svg{display:block;width:min(100%,250px);height:auto;justify-self:center;overflow:visible}
+.dial__key{display:grid;gap:12px;font-size:var(--t-small);color:var(--steel)}
+.dial__key span{display:flex;align-items:center;gap:12px}
+.dial__key span::before{content:"";flex:none;width:20px;height:4px;border-radius:4px;background:var(--steel)}
+.dial__key .k-bot::before{background:var(--glow);box-shadow:0 0 10px rgba(92,127,214,.8)}
+.dial__key .k-msg::before{width:10px;height:10px;margin-inline:5px;border-radius:50%;background:var(--cream);box-shadow:0 0 0 3px rgba(92,127,214,.3),0 0 10px rgba(92,127,214,.9)}
+@media (min-width:640px){.dial{grid-template-columns:minmax(0,250px) minmax(0,1fr);column-gap:clamp(24px,4vw,48px)}}
+.cap__list{display:grid;align-content:start;border-bottom:1px solid var(--line)}
+.cap__list li{display:grid;gap:8px;padding-block:clamp(22px,2.4vw,30px);border-top:1px solid var(--line)}
+.cap__list .h3{font-size:clamp(1.1875rem,1.4vw,1.375rem);letter-spacing:-.02em;line-height:1.2}
+.cap__list p{color:var(--steel);max-width:34rem;text-wrap:pretty}
+.langs{display:grid;gap:16px}
+.langs__lead{font-weight:500}
+.langs__list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px}
+.langs__list li{display:grid;gap:8px;justify-items:start}
+.langs__b{padding:9px 14px 8px;border-radius:16px;border-bottom-right-radius:5px;background:var(--steel);color:var(--navy);font-size:.9375rem;font-weight:500;line-height:1.3}
+.langs__list small{font-size:var(--t-small);color:var(--steel)}
+@media (min-width:640px){.langs__list{grid-template-columns:repeat(4,max-content);column-gap:clamp(20px,3vw,40px)}}
+@media (min-width:1100px){
+  .cap--lead{grid-column:1/span 7}
+  .cap__list{grid-column:9/-1}
+  .langs{grid-template-columns:auto minmax(0,1fr);align-items:center;column-gap:32px}
+}
+.nunca{display:grid;gap:clamp(20px,2.4vw,32px);margin-top:clamp(64px,7vw,112px);padding:clamp(24px,3.4vw,52px);border-radius:24px;background:var(--glass);border:1px solid var(--line);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:inset 0 1px 0 rgba(245,243,238,.07)}
+.nunca__title{font-size:var(--t-statement);font-weight:600;letter-spacing:-.025em;line-height:1.12}
+.nunca__list{display:grid}
+.nunca__list li{display:grid;gap:6px;align-content:start;padding-block:18px;border-top:1px solid var(--line)}
+.nunca__list b{font-weight:600}
+.nunca__list span{color:var(--steel);text-wrap:pretty}
+@media (min-width:640px){.nunca__list{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(24px,3vw,40px)}}
+@media (min-width:1200px){
+  .nunca__list{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:0}
+  .nunca__list li{padding:4px clamp(20px,2vw,32px);border-top:0;border-left:1px solid var(--line)}
+  .nunca__list li:first-child{padding-left:0;border-left:0}
+  .nunca__list li:last-child{padding-right:0}
+}
+.asis__close{margin-top:clamp(72px,8vw,128px);row-gap:28px;align-items:end}
+.asis__close>*{grid-column:1/-1}
+.asis__line{font-size:var(--t-statement);font-weight:600;letter-spacing:-.025em;line-height:1.2;max-width:24ch;text-wrap:balance}
+.asis__act{display:grid;gap:14px;justify-items:start}
+@media (min-width:900px){.asis__line{grid-column:1/span 7}.asis__act{grid-column:9/-1}}
+
 @media (prefers-reduced-motion:reduce){
   .sky i{animation:none}
   .js [data-reveal]{opacity:1;transform:none;filter:none}
+  .js .night [data-g]{opacity:1;transform:none;filter:none}
   *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
 }
 </style>
@@ -571,6 +678,7 @@ body{background:#05080F}
       <a href="#calculadora">Calculadora</a>
       <a href="#como-funciona">Cómo funciona</a>
       <a href="#datos">Tus datos</a>
+      <a href="#asistente">Asistente</a>
     </nav>
     <a class="btn btn--small bar__cta" href="#auditoria"><span>Agendar<span class="bar__cta-long"> auditoría</span></span></a>
   </div>
@@ -771,6 +879,109 @@ body{background:#05080F}
   </div>
 </section>
 
+<section class="asis" id="asistente" aria-labelledby="asis-title">
+  <div class="wrap">
+    <div class="grid asis__head" data-reveal>
+      <p class="tag-live"><i aria-hidden="true"></i>Asistente de WhatsApp</p>
+      <h2 class="h2" id="asis-title">Tu WhatsApp contesta aunque recepción no pueda.</h2>
+      <p class="copy">El paciente nuevo suele escribir a varias clínicas y se queda con la que contesta primero.</p>
+    </div>
+
+    <div class="night grid" id="night">
+      <div class="night__aside">
+        <div class="night__clock" aria-hidden="true">
+          <p class="night__time">22:47</p>
+          <div class="night__meta"><span class="night__day">Domingo</span><span class="night__now">Escribe un paciente nuevo</span></div>
+        </div>
+        <ol class="night__steps">
+          <li class="is-now"><span class="t">22:47</span><b>Escribe un paciente nuevo.</b><span>Es domingo y la clínica está cerrada. Puede que haya escrito también a otras.</span></li>
+          <li><span class="t">22:48</span><b>Contesta el asistente.</b><span>Se presenta como asistente virtual, da el horario y la dirección y pregunta qué días le van bien.</span></li>
+          <li><span class="t">09:00</span><b>Recepción tiene el resumen.</b><span>Al abrir el lunes, la petición espera con lo necesario para confirmar la cita.</span></li>
+        </ol>
+      </div>
+      <div class="night__screen">
+        <div class="ui" data-ui>
+          <div class="ui__bar"><span>Tu clínica dental<small>WhatsApp Business</small></span><span class="ui__tag">Ejemplo</span></div>
+          <div class="chat">
+            <p class="chat__day" data-g="0">Domingo</p>
+            <div class="msg msg--in" data-g="0" data-at="0" style="--d:.12s"><p>Hola, buenas noches. ¿Me podéis dar cita para una revisión? Sería la primera vez que voy.</p><span class="msg__meta">22:47</span></div>
+            <div class="msg msg--out" data-g="1" data-at="1"><p>Hola, buenas noches. Soy el asistente virtual de la clínica. Ahora estamos cerrados, pero te dejo la cita pedida para que recepción te la confirme.</p><span class="msg__meta">22:48 <svg aria-label="Leído"><use href="#ticks"/></svg></span></div>
+            <div class="msg msg--out" data-g="1" style="--d:.4s"><p>Estamos en la calle Mayor, 12, y abrimos de lunes a viernes de 9:00 a 20:00. ¿Qué días y horas te van mejor?</p><span class="msg__meta">22:48 <svg aria-label="Leído"><use href="#ticks"/></svg></span></div>
+            <div class="msg msg--in" data-g="1" style="--d:.8s"><p>Martes o miércoles por la tarde. Me llamo Laura.</p><span class="msg__meta">22:48</span></div>
+            <div class="msg msg--out" data-g="1" style="--d:1.15s"><p>Gracias, Laura. Mañana a primera hora recepción te escribe por aquí para confirmar el día.</p><span class="msg__meta">22:48 <svg aria-label="Leído"><use href="#ticks"/></svg></span></div>
+            <p class="chat__sys" data-g="1" style="--d:1.45s">Petición guardada para recepción.</p>
+          </div>
+        </div>
+        <div class="night__gap" data-g="2" data-at="2"><p class="chat__day">Lunes, 09:00</p></div>
+        <div class="night__recep" data-g="2" style="--d:.2s">
+          <div class="ui" data-ui>
+            <div class="ui__bar"><span>Para recepción</span><span class="ui__tag">Ejemplo</span></div>
+            <div class="recep">
+              <div class="recep__who"><strong>Laura</strong><span class="pill">Paciente nueva</span></div>
+              <p>Primera visita. Espera la confirmación por WhatsApp.</p>
+              <dl class="recep__facts">
+                <div><dt>Motivo</dt><dd>Revisión</dd></div>
+                <div><dt>Preferencia</dt><dd>Martes o miércoles por la tarde</dd></div>
+                <div><dt>Idioma</dt><dd>Castellano</dd></div>
+                <div><dt>Escribió</dt><dd>Domingo, 22:47</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="caps grid">
+      <article class="ui cap--lead" data-ui data-reveal>
+        <div class="cap__text">
+          <h3 class="h3">Responde a cualquier hora</h3>
+          <p>Horario, dirección, parking, mutuas, formas de pago y tratamientos que ofrece tu clínica. Siempre con la información que tu clínica aprueba.</p>
+        </div>
+        <figure class="dial">
+          <svg class="dial__svg" viewBox="0 0 220 220" role="img" aria-label="Reloj de 24 horas. El asistente contesta el día entero; recepción, de 9:00 a 20:00 en este ejemplo. El mensaje del domingo llega a las 22:47, con la clínica cerrada."><defs><filter id="dial-glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><circle cx="110" cy="110" r="96" fill="none" stroke="#5C7FD6" stroke-width="6" filter="url(#dial-glow)"/><circle cx="110" cy="110" r="78" fill="none" stroke="rgba(169,177,196,.16)" stroke-width="6"/><circle cx="110" cy="110" r="78" fill="none" stroke="#A9B1C4" stroke-width="6" stroke-linecap="round" pathLength="24" stroke-dasharray="11 13" stroke-dashoffset="-9" transform="rotate(-90 110 110)"/><path d="M110.00 26.00L110.00 20.00M132.13 27.41L132.91 24.52M152.75 35.95L154.25 33.36M170.46 49.54L172.58 47.42M184.05 67.25L186.64 65.75M192.59 87.87L195.48 87.09M194.00 110.00L200.00 110.00M192.59 132.13L195.48 132.91M184.05 152.75L186.64 154.25M170.46 170.46L172.58 172.58M152.75 184.05L154.25 186.64M132.13 192.59L132.91 195.48M110.00 194.00L110.00 200.00M87.87 192.59L87.09 195.48M67.25 184.05L65.75 186.64M49.54 170.46L47.42 172.58M35.95 152.75L33.36 154.25M27.41 132.13L24.52 132.91M26.00 110.00L20.00 110.00M27.41 87.87L24.52 87.09M35.95 67.25L33.36 65.75M49.54 49.54L47.42 47.42M67.25 35.95L65.75 33.36M87.87 27.41L87.09 24.52" stroke="rgba(169,177,196,.45)" stroke-width="1.5" stroke-linecap="round"/><g fill="#A9B1C4" font-size="11" font-weight="600" text-anchor="middle" dominant-baseline="central"><text x="110.0" y="47.0">0</text><text x="173.0" y="110.0">6</text><text x="110.0" y="173.0">12</text><text x="47.0" y="110.0">18</text></g><text x="110" y="110" fill="#F5F3EE" font-size="30" font-weight="600" letter-spacing="-1" text-anchor="middle" dominant-baseline="central">24 h</text><circle cx="79.94" cy="18.83" r="11" fill="rgba(92,127,214,.35)"/><circle cx="79.94" cy="18.83" r="5.5" fill="#F5F3EE"/></svg>
+          <figcaption class="dial__key">
+            <span class="k-bot">Asistente, las 24 horas</span>
+            <span class="k-rec">Recepción, de 9:00 a 20:00 en este ejemplo</span>
+            <span class="k-msg">El mensaje del domingo, a las 22:47</span>
+          </figcaption>
+        </figure>
+      </article>
+      <ul class="cap__list">
+        <li data-reveal style="--rd:.1s"><h3 class="h3">Capta y cualifica pacientes nuevos</h3><p>Pregunta qué busca, si ya es paciente y qué días le van bien. Recepción recibe una ficha resumida.</p></li>
+        <li data-reveal style="--rd:.2s"><h3 class="h3">Confirma y recuerda citas</h3><p>Envía un recordatorio uno o dos días antes, con la opción de confirmar o cambiar. Si el paciente quiere cambiar, pasa a recepción.</p></li>
+        <li data-reveal style="--rd:.3s"><h3 class="h3">Deriva urgencias fuera de horario</h3><p>Si alguien escribe con dolor o después de un golpe, le da el teléfono de urgencias de tu clínica y avisa a recepción a primera hora. No valora la urgencia: la deriva siempre.</p></li>
+      </ul>
+      <div class="langs" data-reveal>
+        <p class="langs__lead">Contesta en el idioma del paciente:</p>
+        <ul class="langs__list">
+          <li><span class="langs__b" lang="es">Buenas noches</span><small>Castellano</small></li>
+          <li><span class="langs__b" lang="ca">Bona nit</span><small>Catalán</small></li>
+          <li><span class="langs__b" lang="en">Good evening</span><small>Inglés</small></li>
+          <li><span class="langs__b" lang="fr">Bonsoir</span><small>Francés</small></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nunca" data-reveal>
+      <h3 class="nunca__title">Lo que nunca hace</h3>
+      <ul class="nunca__list">
+        <li><b>No diagnostica.</b><span>Ni valora síntomas ni da consejo clínico.</span></li>
+        <li><b>No inventa precios.</b><span>Solo da los que tu clínica tenga publicados.</span></li>
+        <li><b>No se hace pasar por una persona.</b><span>Siempre dice que es el asistente virtual de la clínica.</span></li>
+        <li><b>No decide cuando duda.</b><span>Pasa la conversación a recepción con el resumen.</span></li>
+      </ul>
+    </div>
+
+    <div class="grid asis__close" data-reveal>
+      <p class="asis__line">El mismo asistente que reactiva tus fichas se queda atendiendo tu WhatsApp.</p>
+      <div class="asis__act">
+        <a class="btn" href="#auditoria">Agendar auditoría gratuita</a>
+        <p class="note">En la auditoría miramos también cuántos WhatsApp te entran fuera de horario.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="faq" id="preguntas" aria-labelledby="faq-title">
   <div class="wrap grid faq__grid">
     <h2 class="h2 faq__title" id="faq-title" data-reveal>Preguntas frecuentes</h2>
@@ -796,6 +1007,14 @@ body{background:#05080F}
           <p>Un listado en solo lectura con cinco datos por paciente: código, nombre, teléfono, permiso para WhatsApp y motivo del contacto. No cambiamos nada en tu programa. En la auditoría comprobamos si el tuyo permite sacarlo.</p>
         </details>
         <details class="faq__item">
+          <summary>¿El paciente sabe que habla con un asistente?</summary>
+          <p>Sí. Siempre se presenta como el asistente virtual de tu clínica. Si el paciente pide hablar con una persona, la conversación pasa a recepción con el resumen.</p>
+        </details>
+        <details class="faq__item">
+          <summary>¿Puede dar citas directamente?</summary>
+          <p>Recoge qué días y horas le van bien al paciente y recepción confirma la cita. Si tu clínica tiene agenda online, le envía el enlace para reservar.</p>
+        </details>
+        <details class="faq__item">
           <summary>¿Cuánto cuesta?</summary>
           <p>Depende del tamaño de tu clínica. En la auditoría te lo explicamos con tus números, sin compromiso.</p>
         </details>
@@ -807,11 +1026,12 @@ body{background:#05080F}
   <div class="wrap grid book__grid">
     <div class="book__copy">
       <h2 class="h2" id="book-title">Auditoría gratuita de 15 minutos.</h2>
-      <p class="copy">Una llamada para mirar tres cosas de tu clínica:</p>
+      <p class="copy">Una llamada para mirar cuatro cosas de tu clínica:</p>
       <ul class="checks">
         <li><svg viewBox="0 0 151 166" aria-hidden="true"><use href="#wb-check"/></svg><span>Cuántas fichas tienes y cuántas llevan más de un año sin cita.</span></li>
         <li><svg viewBox="0 0 151 166" aria-hidden="true"><use href="#wb-check"/></svg><span>Si tu programa de gestión permite sacar el listado en solo lectura.</span></li>
         <li><svg viewBox="0 0 151 166" aria-hidden="true"><use href="#wb-check"/></svg><span>Cuántos pacientes tienen permiso para recibir WhatsApp.</span></li>
+        <li><svg viewBox="0 0 151 166" aria-hidden="true"><use href="#wb-check"/></svg><span>Cuántos WhatsApp te entran fuera de horario y cuántos quedan sin respuesta.</span></li>
       </ul>
       <p class="copy">Terminas la llamada sabiendo a cuántos pacientes de tu clínica podemos escribir, con tus datos y no con estimaciones.</p>
       <p class="note">¿Prefieres preguntar algo antes? Escríbenos a <a class="link" href="mailto:hola@winbacksolutions.com">hola@winbacksolutions.com</a>.</p>
@@ -1311,6 +1531,69 @@ body{background:#05080F}
     window.addEventListener("resize", queue);
     drawTrack();
   }
+  // Assistant: one Sunday night in three times. The clock follows the scroll both ways; each part of the conversation appears once
+  (function () {
+    var night = $("#night"); if (!night) return;
+    var clock = $(".night__time", night), dayEl = $(".night__day", night), nowEl = $(".night__now", night);
+    var steps = $$(".night__steps li", night), items = $$("[data-g]", night), anchors = $$("[data-at]", night);
+    var T = ["22:47", "22:48", "09:00"], D = ["Domingo", "Domingo", "Lunes"];
+    var N = steps.map(function (li) { return $("b", li).textContent.replace(/\.$/, ""); });
+    var strips = null;
+    if (!reduce) {
+      var o = document.createElement("span");
+      o.className = "odo";
+      T[0].split("").forEach(function (ch) {
+        var c = document.createElement("span");
+        if (/\d/.test(ch)) {
+          c.className = "odo__c";
+          var st = document.createElement("span");
+          st.className = "odo__s";
+          st.style.setProperty("--n", ch);
+          for (var k = 0; k < 10; k++) { var b = document.createElement("b"); b.textContent = k; st.appendChild(b); }
+          c.appendChild(st);
+        } else {
+          c.className = "odo__c odo__c--sym";
+          var g = document.createElement("b"); g.textContent = ch; c.appendChild(g);
+        }
+        o.appendChild(c);
+      });
+      clock.textContent = "";
+      clock.classList.add("has-odo");
+      clock.appendChild(o);
+      strips = $$(".odo__s", o);
+    }
+    var phase = 0, shown = -1, ticking = 0;
+    var setPhase = function (k) {
+      if (k === phase) return;
+      phase = k;
+      if (strips) T[k].replace(":", "").split("").forEach(function (d, i) { strips[i].style.setProperty("--n", d); });
+      else clock.textContent = T[k];
+      dayEl.textContent = D[k];
+      nowEl.textContent = N[k];
+      steps.forEach(function (li, i) { li.classList.toggle("is-now", i === k); });
+    };
+    var show = function (g) {
+      if (g <= shown) return;
+      shown = g;
+      items.forEach(function (el) { if (+el.getAttribute("data-g") <= g) el.classList.add("is-on"); });
+    };
+    var update = function () {
+      ticking = 0;
+      var vh = window.innerHeight, k = 0, g = -1;
+      anchors.forEach(function (a) {
+        var top = a.getBoundingClientRect().top, at = +a.getAttribute("data-at");
+        if (top < vh * 0.55) k = Math.max(k, at);
+        if (top < vh * 0.88) g = Math.max(g, at);
+      });
+      show(g);
+      setPhase(k);
+    };
+    if (reduce) show(2);
+    var queue = function () { if (!ticking) ticking = requestAnimationFrame(update); };
+    window.addEventListener("scroll", queue, { passive: true });
+    window.addEventListener("resize", queue);
+    update();
+  })();
 })();
 </script>
 </body>
